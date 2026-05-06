@@ -9,7 +9,8 @@ body:
   - type: markdown
     attributes:
       value: >
-        #### Before submitting a bug, please make sure the issue hasn't been already addressed by searching through [the existing and past issues](https://github.com/idaholab/moose/issues).
+        #### Before submitting a bug, please make sure the issue hasn't
+        #### been already addressed by searching through [the existing and past issues].
   - type: textarea
     attributes:
       label: Bug or feature description
