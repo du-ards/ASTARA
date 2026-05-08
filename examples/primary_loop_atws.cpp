@@ -158,12 +158,12 @@ int main() {
         << "P_pzr_MPa, L_pzr_m\n";
     out << std::fixed << std::setprecision(4);
 
-    constexpr double dt        = 1.0e-3;
+    constexpr double dt        = 2.0e-3;
     constexpr double t_total   = 200.0;
     constexpr double t_trip    = 30.0;
     constexpr double log_every = 0.5;        // log every 0.5 simulated seconds
 
-    std::srand(std::time(0)); // Seed with current time
+    std::srand(std::time(0));
 
     bool tripped     = false;
     double next_log  = 0.0;
@@ -191,13 +191,15 @@ int main() {
             // The SG's valve flow law W = C_v * sqrt(rho_g * (P - P_back))
             // will then yield zero (clamped at P-P_back >= 0).
             loop.steamGenerator().inputs().steam_line_pressure_Pa
-                    = loop.steamGenerator().state().P + 5.0e6;
+                    = loop.steamGenerator().state().P;
             // Also cut feedwater (it has nowhere to go).
-            loop.steamGenerator().inputs().feedwater_mass_flow_kg_s = 0.0;
+            loop.steamGenerator().inputs().feedwater_mass_flow_kg_s = 400.0;
             tripped = true;
             std::cout << "  t = " << t
                       << " s: STEAM VALVE CLOSED -- ATWS in progress\n";
         }
+        loop.reactor().reactivity().rho_external = - std::sin(2* static_cast<double >(std::rand() % 2)/2 -1)/1000;
+
 
         if (t + 1.5 * dt >= next_log) {
             const auto& rs   = loop.reactor().state();
@@ -206,7 +208,7 @@ int main() {
             const auto& pz   = loop.pressurizer();
             // A random reactor engineer likes to mess with control rods or
             // chemical poison lol
-            loop.reactor().reactivity().rho_external = (2* static_cast<double >(std::rand() % 2)/2 -1)/10000;
+
             const double T_fuel_avg = fuel_T_average(r);
             const double T_mod_avg  = mod_T_average(r);
             const double rho_ext    = r.reactivity().rho_external;
@@ -232,7 +234,6 @@ int main() {
         loop.timeStep(dt);
     }
 
-    // ----- Summary -----
     const auto& rs  = loop.reactor().state();
     const Reactor& r = loop.reactor();
     const auto& sg  = loop.steamGenerator();

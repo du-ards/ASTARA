@@ -7,6 +7,10 @@ well.
 
 The over all design followed an OOP design and should be easily customizable. 
 
+
+![CI](https://github.com/du-ards/ASTARA/actions/workflows/workflow.yml/badge.svg?branch=main)
+
+
 # Dependencies
 
 For the thermal fluid property lookup ASTARA relies on a third party lib called 
