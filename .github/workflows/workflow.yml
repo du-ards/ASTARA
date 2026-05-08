@@ -18,10 +18,8 @@ jobs:
           sudo apt install -y cmake libgtest-dev
       - name: Checkout code
         uses: actions/checkout@v6
-
-      - name: Initialize submodules
-        shell: bash
-        run: git submodule update --init --recursive
+        with:
+          submodules: recursive
 
       - name: Build
         shell: bash
