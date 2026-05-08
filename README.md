@@ -26,13 +26,13 @@ Just copy the commands and run one by one.
 
 ```
 git clone https://github.com/du-ards/ASTARA.git
-cd ASTARA/externals
-git submodule update --init --recursive IF97
+git submodule update --init --recursive 
 cd ../
 
 mkdir -p build 
 cd build 
-cd cmake .. && make -j $nproc
+cmake ..
+make -j $nproc
 ```
 # Adding as a CMake project
 
