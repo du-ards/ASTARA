@@ -14,7 +14,7 @@ The over all design followed an OOP design and should be easily customizable.
 # Dependencies
 
 For the thermal fluid property lookup ASTARA relies on a third party lib called 
-[CoolProp](https://github.com/coolprop/coolprop). The code is tested gcc-13.3.0 
+[IF97](https://github.com/coolprop/IF97). The code is tested gcc-13.3.0 
 version in Ubuntu 24.04 LTS and Debian version 13.0. For the build system it relies entirely 
 on CMake (VERSION 3.15 or later ). For Windows support please 
 reach out to any of the maintainers. 
@@ -27,7 +27,7 @@ Just copy the commands and run one by one.
 ```
 git clone https://github.com/du-ards/ASTARA.git
 cd ASTARA/externals
-git submodule update --init --recursive CoolProp
+git submodule update --init --recursive IF97
 cd ../
 
 mkdir -p build 

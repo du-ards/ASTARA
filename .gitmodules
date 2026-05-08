@@ -1,3 +1,3 @@
-[submodule "externals/CoolProp"]
-	path = externals/CoolProp
-	url = https://github.com/CoolProp/CoolProp.git
+[submodule "externals/IF97"]
+	path = externals/IF97
+	url = https://github.com/CoolProp/IF97.git

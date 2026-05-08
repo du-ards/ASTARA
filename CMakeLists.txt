@@ -48,11 +48,11 @@ endif()
 # -----------------------------------------------------------------------------
 # Water properties: IF97 (header-only IAPWS-IF97, ships with CoolProp)
 # -----------------------------------------------------------------------------
-set(IF97_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/CoolProp/externals/IF97")
+set(IF97_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals//IF97")
 if(NOT EXISTS "${IF97_DIR}/IF97.h")
     message(FATAL_ERROR
             "IF97 header not found at ${IF97_DIR}/IF97.h.\n"
-            "Run: git submodule update --init externals/CoolProp/externals/IF97")
+            "Run: git submodule update --init externals/IF97")
 endif()
 add_library(astara_if97 INTERFACE)
 target_include_directories(astara_if97 SYSTEM INTERFACE "${IF97_DIR}")
