@@ -26,8 +26,8 @@ Just copy the commands and run one by one.
 
 ```
 git clone https://github.com/du-ards/ASTARA.git
+cd ASTARA
 git submodule update --init --recursive 
-cd ../
 
 mkdir -p build 
 cd build 
