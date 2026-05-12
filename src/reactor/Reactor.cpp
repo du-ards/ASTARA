@@ -103,26 +103,20 @@ void Reactor::timeStep(double dt) {
     state_ = astara::core::rk4Step(state_.t_s, state_, dt, deriv);
     state_.t_s += dt;
 
-    // Sanity checks.  We *do not* silently clamp -- the legacy code did this,
-    // and it hid blow-ups in tests.  Failing loudly is better.
+    // Sanity checks. Failing loudly is better.
     if (!std::isfinite(state_.kinetics.power())) {
         throw std::runtime_error("Reactor::timeStep produced non-finite power");
     }
-    for (double v : state_.kinetics.precursors()) {
-        if (!std::isfinite(v)) {
-            throw std::runtime_error("Reactor::timeStep produced non-finite precursor");
+    auto check_blowups=[](std::vector<double>& params, std::string message){
+        for (double v : params) {
+            if (!std::isfinite(v)) 
+                throw std::runtime_error(message);
         }
     }
-    for (double v : state_.thermal.T_fuel) {
-        if (!std::isfinite(v)) {
-            throw std::runtime_error("Reactor::timeStep produced non-finite fuel T");
-        }
-    }
-    for (double v : state_.thermal.T_moderator) {
-        if (!std::isfinite(v)) {
-            throw std::runtime_error("Reactor::timeStep produced non-finite moderator T");
-        }
-    }
+    check_blowups(state_.kinetics.precursors(),"Reactor::timeStep produced non-finite precursor");
+    check_blowups(state_.thermal.T_fuel,"Reactor::timeStep produced non-finite fuel T");
+    check_blowups(state_.thermal.T_moderator,"Reactor::timeStep produced non-finite moderator T");
+
 }
 
 }  // namespace astara::reactor
