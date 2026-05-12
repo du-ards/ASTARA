@@ -112,7 +112,7 @@ void Reactor::timeStep(double dt) {
             if (!std::isfinite(v)) 
                 throw std::runtime_error(message);
         }
-    }
+    };
     check_blowups(state_.kinetics.precursors(),"Reactor::timeStep produced non-finite precursor");
     check_blowups(state_.thermal.T_fuel,"Reactor::timeStep produced non-finite fuel T");
     check_blowups(state_.thermal.T_moderator,"Reactor::timeStep produced non-finite moderator T");
