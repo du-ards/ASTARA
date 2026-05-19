@@ -12,6 +12,6 @@ Most of the models were adapted from their work:
   - `mann_thermal.md` &mdash; Mann nodalisation, steady-state algebra
   - `pump.md`         &mdash; homologous pump theory and similarity laws
   - `pressurizer.md`  &mdash; two-region energy balance (thesis Appendix C)
-  - `ali_sg.md`       &mdash; Ali Model D U-tube SG (thesis Appendix B; Phase 4)
-  - `nodal_sg.md`     &mdash; 14-node SG (Phase 5)
-  - `controllers.md`  &mdash; PID, three-element, reactor, pressurizer (Phase 6)
+  - `ali_sg.md`       &mdash; Ali Model D U-tube SG (thesis Appendix B)
+  - `nodal_sg.md`     &mdash; 14-node SG 
+  - `controllers.md`  &mdash; PID, three-element, reactor, pressurizer
