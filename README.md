@@ -9,6 +9,7 @@ The over all design followed an OOP design and should be easily customizable.
 
 
 ![CI](https://github.com/du-ards/ASTARA/actions/workflows/workflow.yml/badge.svg?branch=main)
+![Docker](https://github.com/du-ards/ASTARA/actions/workflows/docker_build.yml/badge.svg?branch=main)
 
 
 # Dependencies
